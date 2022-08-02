@@ -18,7 +18,7 @@
 
         <div class="col-md-10">
 
-            <div class="card p-3  py-4">
+            <div class="card p-3 py-4">
 
                 <h3 class="px-2">Filter</h3>
 
@@ -26,23 +26,7 @@
 
                     <div class="row g-3 mt-2">
 
-                        <div class="col-md-3">
-
-                            <select class="selectpicker" data-live-search="true" aria-label="Default select example"
-                                name="Country_Market_holder" id="Market_holder" data-dependent="state"
-                                value="{{ request()->get('Country_Market_holder') }}">
-                                <option value="" disabled selected>Select country</option>
-                                @foreach($country as $country)
-                                <option value="{{$country->Country_of_Manufacturer}}">
-                                    {{$country->Country_of_Manufacturer}}
-                                </option>
-                                @endforeach
-                            </select>
-
-
-                        </div>
-
-                        <div class="col-md-6">
+                        <div class="col-sm-8 col-12">
 
                             <input type="text" name="search_name" value="{{ request()->get('search_name') }}"
                                 class="form-control" aria-label="Search" aria-describedby="button-addon2"
@@ -50,7 +34,7 @@
 
                         </div>
 
-                        <div class="col-md-3">
+                        <div class=" col-sm-4 col-12">
 
                             <button class="btn btn-secondary btn-block" type="submit" value="Submit">Search
                                 Results</button>
@@ -89,7 +73,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4 mt-2">
+                                    <div class="col-md-6 mt-2">
 
                                         <select class="selectpicker w-100 " data-size="8" data-live-search="true"
                                             aria-label="Default select example" name="Market_Authorisation_Holder"
@@ -108,7 +92,7 @@
                                     </div>
 
 
-                                    <div class="col-md-4 mt-2">
+                                    <div class="col-md-6 mt-2">
 
                                         <select class="selectpicker w-100" data-size="8" data-live-search="true"
                                             aria-label="Default select example" name="Manufacturer" id="Manufacturer"
@@ -126,7 +110,7 @@
                                     </div>
 
 
-                                    <div class="col-md-4 mt-2">
+                                    <div class="col-md-6 mt-2">
 
                                         <select class="selectpicker w-100" data-size="8" data-live-search="true"
                                             aria-label="Default select example" name="Brand_Name" id="Brand_Name"
@@ -142,6 +126,22 @@
 
                                     </div>
 
+                                    <div class="col-md-6 mt-2">
+
+                                        <select class="selectpicker w-100" data-live-search="true"
+                                            aria-label="Default select example" name="Country_Market_holder"
+                                            id="Market_holder" data-dependent="state"
+                                            value="{{ request()->get('Country_Market_holder') }}">
+                                            <option value="" disabled selected>Select country</option>
+                                            @foreach($country as $country)
+                                            <option value="{{$country->Country_of_Manufacturer}}">
+                                                {{$country->Country_of_Manufacturer}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -149,10 +149,6 @@
                         </div>
                     </div>
                 </form>
-
-
-
-
             </div>
 
         </div>
@@ -162,8 +158,8 @@
 </div>
 
 <!-- Table engine -->
-<div class="table-responsive mt-5 mb-5 mx-4 bdr">
-    <table class="table table-hover table-light table-striped">
+<div class="table-responsive mt-5 mb-5 mx-4 bdr ">
+    <table class="table table-hover table-light table-striped p-3">
         <thead>
             <tr class="align-middle">
                 <th class="fw-bold">Certification number</th>

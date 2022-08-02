@@ -92,11 +92,9 @@
                             List of drugs
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{URL('/listofdrugs')}}">Validation</a></li>
-                            <li><a class="dropdown-item" href="{{URL('/listofdrugs/expiry')}}">Expiry</a></li>
+                            <li><a class="dropdown-item" href="{{URL('/listofdrugs')}}">Valid</a></li>
+                            <li><a class="dropdown-item" href="{{URL('/listofdrugs/expiry')}}">Expire</a></li>
                         </ul>
-
-                        
                     </li>
                 </ul>
 

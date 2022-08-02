@@ -15,7 +15,7 @@
 
                     <div class="col-md-3">
 
-                        <select class="selectpicker" data-live-search="true" aria-label="Default select example"
+                        <select class="selectpicker w-100" data-live-search="true" aria-label="Default select example"
                             name="Country_Market_holder" id="Market_holder" data-dependent="state"
                             value="{{ request()->get('Country_Market_holder') }}">
                             <option value="" disabled selected>Select country</option>
