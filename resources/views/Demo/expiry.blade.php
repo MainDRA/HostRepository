@@ -55,8 +55,8 @@
 </div>
 <!-- Table engine -->
 <div class="table-responsive my-5 mx-4 bdr">
-    <table class="table table-hover table-light table-striped">
-        <thead>
+    <table class="table table-hover table-striped">
+        <thead class="table-danger">
             <tr class="align-middle ">
                 <th class="fw-bold">Certification number</th>
                 <th class="fw-bold">Generic name</th>
@@ -71,7 +71,7 @@
         </thead>
         <tbody>
             @foreach($lists as $item)
-            <tr>
+            <tr class="expire_table">
                 <td>{{ $item->Certificate_Number}}</td>
                 <td>{{ $item->Generic_Name }}</td>
                 <td>{{ $item->Brand_Name }}</td>
@@ -80,7 +80,7 @@
                 <td>{{ $item->Market_Authorisation_Holder }}</td>
                 <td>{{ Carbon\Carbon::parse($item->Expiry_Date)->format('j-M-Y') }}</td>
                 <td class="align-middle text-center"><a class="test btn btn-light text-dark btn-lg"
-                        href="{{URL('/certification/'.$item->SL)}}">Click</a></td>
+                        href="{{URL('/certification/'.$item->SL)}}">Preview</a></td>
                 <td class="align-middle text-center"><a class="test btn btn-light text-dark btn-lg"
                         href="{{URL('/'.$item->SL)}}"><i class="fa-solid fa-circle-chevron-right fa-xl"></i></a></td>
             </tr>

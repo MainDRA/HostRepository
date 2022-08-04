@@ -70,4 +70,8 @@
   overflow: hidden;
 }
 
+.expire_table:nth-child(even) {
+  background-color: #F8D7DA;
+}
+
 
