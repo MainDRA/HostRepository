@@ -219,15 +219,15 @@ class DrugController extends Controller
         $country = DrugModel::select('Country_of_Manufacturer')->distinct()->get();
 
         if($request->filled('search_name')){
-            $lists = DrugModel::search($request->input('search_name'))->paginate();
+            $lists = DrugModel::search($request->input('search_name'))->paginate(10);
             
         }
         elseif ($request->filled('Country_Market_holder')){
-            $lists = DrugModel::where('Expiry_Date','<=',date('o-m-d'))->where('Country_of_Manufacturer','LIKE','%'.$request->input('Country_Market_holder').'%')->paginate();  
+            $lists = DrugModel::where('Expiry_Date','<=',date('o-m-d'))->where('Country_of_Manufacturer','LIKE','%'.$request->input('Country_Market_holder').'%')->paginate(10);  
         }
         
         else{
-            $lists = DrugModel::whereDate('Expiry_Date','<=',date('o-m-d'))->orderBy('Expiry_Date', 'DESC')->paginate();
+            $lists = DrugModel::whereDate('Expiry_Date','<=',date('o-m-d'))->orderBy('Expiry_Date', 'DESC')->paginate(10);
             
         }
         
@@ -303,45 +303,45 @@ class DrugController extends Controller
         // Google sheet API update
         // Reference -> https://www.nidup.io/blog/manipulate-google-sheets-in-php-with-api
 
-        $this->spreadSheetId='1ja3haHVrOdlcrmBPqmO8Y6P6GBhbwC9I5wAVfoJcHcE';
-        $this->client = new \Google\Client();
-        $this->client->setAuthConfig(storage_path('testingKey.json'));
-        $this->client->addScope("https://www.googleapis.com/auth/spreadsheets");
-        $this->client->setAccessType('offline');
+        // $this->spreadSheetId='1ja3haHVrOdlcrmBPqmO8Y6P6GBhbwC9I5wAVfoJcHcE';
+        // $this->client = new \Google\Client();
+        // $this->client->setAuthConfig(storage_path('credentials.json'));
+        // $this->client->addScope("https://www.googleapis.com/auth/spreadsheets");
+        // $this->client->setAccessType('offline');
 
-        $this->googleSheetService = new Google_Service_Sheets($this->client);
+        // $this->googleSheetService = new Google_Service_Sheets($this->client);
 
-        $now = Carbon::now()->format('o-m-d H:i:s');
-        $created_at = $individual->created_at;
+        // $now = Carbon::now()->format('o-m-d H:i:s');
+        // $created_at = $individual->created_at;
 
-        $updateRow = [
-                $SL,
-                $request->Registration_Type,
-                $request->Application_Type,
-                $request->Market_Authorisation_Holder,
-                $request->Category_of_Medical_Product,
-                $request->This_product_is_intended_for,
-                $request->Generic_Name,
-                $request->Brand_Name,
-                $request->Dossage_Form,
-                $request->Pack_Size,
-                $request->Type_of_Packaging,
-                $request->Composition_of_active_ingredients_with_strengths,
-                $request->Manufacturer,
-                $request->Therapeutic_Category,
-                $request->Certificate_Number,
-                $request->Country_of_Manufacturer,
-                $request->Issue_Date,
-                $request->Expiry_Date,
-                $created_at,
-                $now,
-        ];
-        $rows = [$updateRow];
-        $valueRange = new Google_Service_Sheets_ValueRange();
-        $valueRange->setValues($rows);
-        $range = 'A'.$SL+1;     // where the replacement will start, here, first column and second line
-        $options = ['valueInputOption' => 'USER_ENTERED'];
-        $this->googleSheetService->spreadsheets_values->update($this->spreadSheetId, $range, $valueRange, $options);
+        // $updateRow = [
+        //         $SL,
+        //         $request->Registration_Type,
+        //         $request->Application_Type,
+        //         $request->Market_Authorisation_Holder,
+        //         $request->Category_of_Medical_Product,
+        //         $request->This_product_is_intended_for,
+        //         $request->Generic_Name,
+        //         $request->Brand_Name,
+        //         $request->Dossage_Form,
+        //         $request->Pack_Size,
+        //         $request->Type_of_Packaging,
+        //         $request->Composition_of_active_ingredients_with_strengths,
+        //         $request->Manufacturer,
+        //         $request->Therapeutic_Category,
+        //         $request->Certificate_Number,
+        //         $request->Country_of_Manufacturer,
+        //         $request->Issue_Date,
+        //         $request->Expiry_Date,
+        //         $created_at,
+        //         $now,
+        // ];
+        // $rows = [$updateRow];
+        // $valueRange = new Google_Service_Sheets_ValueRange();
+        // $valueRange->setValues($rows);
+        // $range = 'A'.$SL+1;     // where the replacement will start, here, first column and second line
+        // $options = ['valueInputOption' => 'USER_ENTERED'];
+        // $this->googleSheetService->spreadsheets_values->update($this->spreadSheetId, $range, $valueRange, $options);
 
         
         return redirect()->route('show_case',['id' => $individual->SL ])->with('success','Successfully updated!');

@@ -10,7 +10,7 @@ class DrugModel extends Model
 {
     use HasFactory,Searchable;
 
-    protected $table = 'all_drugs';
+    protected $table = 'final_table';
     protected $primaryKey = 'SL';
     protected $fillable = [
     'Registration_Type', 
