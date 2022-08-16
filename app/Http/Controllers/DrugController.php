@@ -163,19 +163,15 @@ class DrugController extends Controller
 
         // Amount of Manufacturer
         $Amount_of_Manufacturer = DrugModel::select('Manufacturer')->distinct()->get()->count();
-        
-        // Amount of Manufacturer
-        $Amount_of_Therapeutic = DrugModel::select('Therapeutic_Category')->distinct()->get()->count();
-
-        // Types of Packages
-        $Types_of_Packages = DrugModel::select('Type_of_Packaging')->distinct()->get()->count();
-
-        // Category of Medical Products
-        $Category_of_Medical_Product = DrugModel::select('Category_of_Medical_Product')->distinct()->get()->count();
-        
-        
+          
         // Total Drug
         $total = DrugModel::select("SL")->get()->count();
+
+        // Essential
+        $essential = DrugModel::where("Essential","Essential")->get()->count();
+
+        // Non-esssential
+        $non_essential = DrugModel::where("Essential","Non-essential")->get()->count();
         
         return view ('Demo.dashboard', 
         compact('IssueDate',
@@ -186,9 +182,8 @@ class DrugController extends Controller
         'ListIntention',
         'Amount_of_intent',
         'Amount_of_Manufacturer',
-        'Amount_of_Therapeutic',
-        'Types_of_Packages',
-        'Category_of_Medical_Product',
+        'essential',
+        'non_essential',
         ));
     }
 
@@ -283,6 +278,7 @@ class DrugController extends Controller
             'Certificate_Number' => 'required',
             'Issue_Date' => 'required',
             'Expiry_Date' => 'required',
+            'Essential' => 'max:255',
         ]);
 
         $individual = DrugModel::findOrFail($SL);
@@ -373,6 +369,7 @@ class DrugController extends Controller
             'Country_of_Manufacturer' => 'required',
             'Issue_Date' => 'required',
             'Expiry_Date' => 'required',
+            'Essential' => 'max:255',
         ]);
 
         // $validated['SL']="$SL_sql";

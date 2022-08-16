@@ -91,7 +91,7 @@
         </div>
 
         <!-- Second line  -->
-        <div class="col-md-3 col-sm-6 d-flex justify-content-center mt-3 ">
+        <div class="col-md-4 col-sm-6 d-flex justify-content-center mt-3 ">
 
             <div class="card text-dark bg-light mb-3 w-100 ">
                 <div class="card-header fs-5 text-center fw-bold">
@@ -107,81 +107,63 @@
                 </div>
 
                 <div class="card-footer text-muted">
-                    <a class="btn btn-primary w-100" href="{{URL('/dashboard/manufacturer')}}" role="button">Read
-                        more</a>
+                    <a class="btn btn-primary w-100" href="{{URL('/dashboard/manufacturer')}}" role="button">
+                        Read more
+                    </a>
                 </div>
             </div>
 
         </div>
 
-        <div class="col-md-3 col-sm-6 d-flex justify-content-center mt-3 ">
+        <div class="col-md-4 col-sm-6 d-flex justify-content-center mt-3 ">
 
             <div class="card text-dark bg-light mb-3 w-100 ">
                 <div class="card-header fs-5 text-center fw-bold">
 
-                    Therapeutic Category
+                    Essential drugs
 
                 </div>
 
                 <div class="card-body text-center ">
 
-                    <h1 class="card-title">{{$Amount_of_Therapeutic}}</h1>
+                    <h1 class="card-title">{{$essential}}</h1>
 
                 </div>
 
                 <div class="card-footer text-muted">
-                    <a class="btn btn-primary w-100" href="{{URL('/dashboard/therapeutic')}}" role="button">Read
-                        more</a>
+                    <a class="btn btn-primary w-100" href="{{URL('/dashboard/essential')}}" role="button">
+                        Read more
+                    </a>
                 </div>
 
             </div>
 
         </div>
 
-        <div class="col-md-3 col-sm-6 d-flex justify-content-center mt-3 ">
+        <div class="col-md-4 col-sm-6 d-flex justify-content-center mt-3 ">
 
             <div class="card text-dark bg-light mb-3 w-100 ">
                 <div class="card-header fs-5 text-center fw-bold">
 
-                    Types of Packages
+                    Non-essential drugs
 
                 </div>
 
                 <div class="card-body text-center ">
 
-                    <h1 class="card-title">{{$Types_of_Packages}}</h1>
+                    <h1 class="card-title">{{$non_essential}}</h1>
 
                 </div>
 
                 <div class="card-footer text-muted">
-                    <a class="btn btn-primary w-100" href="{{URL('/dashboard/packagetype')}}" role="button">Read
-                        more</a>
+                    <a class="btn btn-primary w-100" href="{{URL('/dashboard/non_essential')}}" role="button">
+                        Read more
+                    </a>
                 </div>
             </div>
 
         </div>
 
-        <div class="col-md-3 col-sm-6 d-flex justify-content-center mt-3 ">
-
-            <div class="card text-dark bg-light mb-3 w-100 ">
-                <div class="card-header fs-5 text-center fw-bold">
-
-                    Category of Products
-
-                </div>
-
-                <div class="card-body text-center ">
-
-                    <h1 class="card-title">{{$Category_of_Medical_Product}}</h1>
-
-                </div>
-
-                <div class="card-footer text-muted">
-                    <a class="btn btn-primary w-100" href="{{URL('/dashboard/productcat')}}" role="button">Read more</a>
-                </div>
-            </div>
-
-        </div>
 
         <!-- Third line -->
 

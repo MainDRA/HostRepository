@@ -46,9 +46,9 @@ Route::match(['put','patch'],'/update/{id}',[DrugController::class, 'update']);
 // Read more
 Route::get('/dashboard/expire',[DashboardController::class, 'Expire_more']);
 Route::get('/dashboard/manufacturer',[DashboardController::class, 'Manufacturer']);
-Route::get('/dashboard/therapeutic',[DashboardController::class, 'Therapeutic']);
-Route::get('/dashboard/packagetype',[DashboardController::class, 'PackageType']);
-Route::get('/dashboard/productcat',[DashboardController::class, 'ProductCat']);
+Route::get('/dashboard/essential',[DashboardController::class, 'Essential']);
+Route::get('/dashboard/non_essential',[DashboardController::class, 'Non_essential']);
+
 
 
 

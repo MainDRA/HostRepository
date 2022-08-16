@@ -28,23 +28,18 @@ class DashboardController extends Controller
         return view('Dashboard.manufacturer',compact('Amount_of_Manufacturer'));
     }
 
-    public function Therapeutic()
-    {
-        $Amount_of_Therapeutic = DrugModel::select('Therapeutic_Category')->distinct()->get();
+    public function Essential()
+    { 
+        $Amount_of_Essential = DrugModel::where("Essential","Essential")->paginate();
 
-        return view('Dashboard.therapeutic',compact('Amount_of_Therapeutic'));
+        return view('Dashboard.essential',compact('Amount_of_Essential'));
     }
 
-    public function PackageType()
+    public function Non_essential()
     {
-        $Types_of_Packages = DrugModel::select('Type_of_Packaging')->distinct()->get();
-        return view('Dashboard.packagetype',compact('Types_of_Packages'));
+        $Amount_of_non_essential = DrugModel::where("Essential","Non-essential")->paginate();
+        return view('Dashboard.non_essential',compact('Amount_of_non_essential'));
     }
 
-    public function ProductCat()
-    {
-        $Category_of_Medical_Product = DrugModel::select('Category_of_Medical_Product')->distinct()->get();
-        $path = ProductcatModel::select('image_URL')->get();
-        return view('Dashboard.productcat',compact('Category_of_Medical_Product'));
-    }
+
 }

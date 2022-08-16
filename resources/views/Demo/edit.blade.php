@@ -116,13 +116,21 @@
                 </div>
 
                 <!-- Fifth line -->
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label>Market Authorisation Holder</label></br>
                     <input type="text" name="Market_Authorisation_Holder" id="name" class="form-control" value="{{ $individual->Market_Authorisation_Holder }}"></br>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label>Generic Name</label></br>
                     <input type="text" name="Generic_Name" id="name" class="form-control" value="{{ $individual->Generic_Name }}"></br>
+                </div>
+                <div class="col-md-4">
+                <label>Essential/Non-essential</label></br>
+                    <select class="form-select" id="Essential" name="Essential">
+                        <option class="disable">{{$individual->Essential}}</option>
+                        <option value="Essential">Essential</option>
+                        <option value="Non-essential">Non-essential</option>
+                    </select>
                 </div>
 
                 <!-- Sixth line -->

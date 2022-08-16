@@ -31,7 +31,8 @@ class DrugModel extends Model
     'Issue_Date', 
     'Expiry_Date',
     'updated_at', 
-    'created_at'
+    'created_at',
+    'Essential',
     ];
 
 
