@@ -353,6 +353,7 @@ class DrugController extends Controller
     public function create(Request $request)
     {
         // Mysql database creating part
+        $SL_sql = count(DrugModel::select('SL')->get())+1;
 
         $validated = $request->validate([
             'Registration_Type' => 'required',
@@ -374,6 +375,9 @@ class DrugController extends Controller
             'Expiry_Date' => 'required',
         ]);
 
+        // $validated['SL']="$SL_sql";
+        // dd($validated);
+
         DrugModel::create($validated);
 
         // Google sheet API create
@@ -388,8 +392,8 @@ class DrugController extends Controller
 
         $this->googleSheetService = new Google_Service_Sheets($this->client);
 
-        $number_row = count(DrugModel::select('SL')->get())+2;
-        $SL = count(DrugModel::select('SL')->get())+1;
+        $number_row = count(DrugModel::select('SL')->get())+1;
+        $SL = count(DrugModel::select('SL')->get());
         $now = Carbon::now()->format('o-m-d H:i:s');
         
         // Google sheet API (Add)
@@ -441,7 +445,7 @@ class DrugController extends Controller
         }
         
 
-        return redirect()->route('/')->with('Asuccess','Successfully Created!')->with('result', $result);
+        return redirect()->route('home')->with('Asuccess','Successfully Created!')->with('result', $result);
     }
 
 
