@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\DrugModel;
 use App\Models\CountryModel;
 use App\Models\IntentionModel;
+use App\Models\TherapeuticModel;
 
 // Google sheet API
 use Google_Service_Sheets;
@@ -76,8 +77,9 @@ class DrugController extends Controller
         $Registration_Type = DrugModel::select('Registration_Type')->orderBy('Registration_Type', 'ASC')->distinct()->get();
         $Application_Type = DrugModel::select('Application_Type')->orderBy('Application_Type', 'ASC')->distinct()->get();
         $Intention = DrugModel::select('This_product_is_intended_for')->orderBy('This_product_is_intended_for', 'ASC')->distinct()->get();
-    
-        return view ('Demo.create', compact('Registration_Type','Application_Type','Intention'));
+        $Therapeutic_cat = TherapeuticModel::select("Therapeutic_category")->get();
+
+        return view ('Demo.create', compact('Registration_Type','Application_Type','Intention','Therapeutic_cat'));
     }
 
     public function dashboard()
@@ -408,9 +410,9 @@ class DrugController extends Controller
                 $request->Type_of_Packaging,
                 $request->Composition_of_active_ingredients_with_strengths,
                 $request->Manufacturer,
+                $request->Country_of_Manufacturer,
                 $request->Therapeutic_Category,
                 $request->Certificate_Number,
-                $request->Country_of_Manufacturer,
                 $request->Issue_Date,
                 $request->Expiry_Date,
                 $now,

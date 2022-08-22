@@ -51,7 +51,7 @@
 
 </head>
 
-<body style="background-color: white;">
+<body>
 
     <div class="container">
 
@@ -65,10 +65,13 @@
 
     </div>
 
-    <nav class="navbar navbar-expand-sm navbar-light bg-dark mx-2 nav-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mx-2 nav-header">
         <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="mynavbar">
-                <ul class="navbar-nav me-auto nav-letter">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span><i class="fa-solid fa-bars"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-letter">
                     <li class="nav-item mx-3">
                         <a class="nav-link" aria-current="page" href="{{URL('/')}}">Home</a>
                     </li>
@@ -101,6 +104,7 @@
             </div>
         </div>
     </nav>
+    
 
 
     <div class="container-fluid mt-3">

@@ -27,13 +27,11 @@
         <div class="col-md-7 col-sm-12">
             <div class="card bg-light d-flex flex-colum mb-2">               
                 <div class="row my-3 mx-2">
-                    <div class="col-md-4 my-2">
+                    <div class="col-md-6 my-2">
                         <a href="{{URL('/dashboard')}}" class="btn btn-success w-100 btn-lg" role="button" >Registered Drugs</a>
                     </div>
-                    <div class="col-md-4 my-2">
-                        <a href="#" class="btn btn-success w-100 btn-lg" role="button" > Medical Products</a>
-                    </div>
-                    <div class="col-md-4 my-2">
+                    
+                    <div class="col-md-6 my-2">
                         <a href="#" class="btn btn-success w-100 btn-lg" role="button" > Health Supplement</a>
                     </div>
                 

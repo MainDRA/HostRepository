@@ -92,7 +92,15 @@
             </div>
             <div class="col-md-4">
                 <label>Therapeutic Category</label></br>
-                <input type="text" name="Therapeutic_Category" id="name" class="form-control"></br>
+                <input type="text" name="Therapeutic_Category" id="Therapeutic_Category" class="form-control" 
+                placeholder="Type to enter" list="TC"></br>
+                <!-- List for helping -->
+                <datalist id="TC">
+                    @foreach($Therapeutic_cat as $Tcat)
+                    <option value="{{ $Tcat->Therapeutic_category}}">
+                        {{ $Tcat->Therapeutic_category }}</option>
+                    @endforeach
+                </datalist>
             </div>
 
             <!-- Fourth line -->
