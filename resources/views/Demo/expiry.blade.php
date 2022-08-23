@@ -55,7 +55,7 @@
 </div>
 <!-- Table engine -->
 <div class="table-responsive my-5 mx-4 bdr">
-    <table class="table table-hover table-striped">
+    <table class="table table-hover table-light table-striped">
         <thead class="table-danger">
             <tr class="align-middle ">
                 <th class="fw-bold">Certification number</th>

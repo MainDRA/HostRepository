@@ -20,6 +20,13 @@
     transform: translate(0, -5px);
 }
 
+#btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+
 .test{
   background-color: transparent;
 }
@@ -68,8 +75,8 @@
   overflow: hidden;
 }
 
-.expire_table:nth-child(even) {
+/* .expire_table:nth-child(even) {
   background-color: #F8D7DA;
-}
+} */
 
 

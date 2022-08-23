@@ -56,7 +56,7 @@
 <!-- Table engine -->
 <div class="table-responsive my-5 mx-4 bdr">
     <table class="table table-hover table-light table-striped">
-        <thead>
+        <thead class="table-success">
             <tr class="align-middle ">
                 <th class="fw-bold">Certification number</th>
                 <th class="fw-bold">Generic name</th>
