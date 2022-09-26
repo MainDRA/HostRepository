@@ -74,12 +74,36 @@ class DrugController extends Controller
     
     public function store(Request $request)
     {
-        $Registration_Type = DrugModel::select('Registration_Type')->orderBy('Registration_Type', 'ASC')->distinct()->get();
-        $Application_Type = DrugModel::select('Application_Type')->orderBy('Application_Type', 'ASC')->distinct()->get();
-        $Intention = DrugModel::select('This_product_is_intended_for')->orderBy('This_product_is_intended_for', 'ASC')->distinct()->get();
+        $This_year = Carbon::now()->format('y');
         $Therapeutic_cat = TherapeuticModel::select("Therapeutic_category")->get();
 
-        return view ('Demo.create', compact('Registration_Type','Application_Type','Intention','Therapeutic_cat'));
+        // Certification number
+        $Full_Veterinary = DrugModel::where('Certificate_Number','LIKE','BHU-DRA/22/V%')->count();
+        $Full_Human = DrugModel::where('Certificate_Number','LIKE','BHU-DRA/22/H%')->count();
+        $Sum_full =$Full_Veterinary+$Full_Human;
+        $full = substr(str_repeat(0, 3).$Sum_full+1, - 3);
+
+        $Ex_Veterinary = DrugModel::where('Certificate_Number','LIKE','BHU-DRA/22/ER/V%')->count();
+        $Ex_Human = DrugModel::where('Certificate_Number','LIKE','BHU-DRA/22/ER/H%')->count();
+        $Sum_ex =$Ex_Veterinary+$Ex_Human;
+        $ex = substr(str_repeat(0, 3).$Sum_ex+1, - 3);
+
+        $AB_Veterinary = DrugModel::where('Certificate_Number','LIKE','BHU-DRA/22/AR/V%')->count();
+        $AB_Human = DrugModel::where('Certificate_Number','LIKE','BHU-DRA/22/AR/H%')->count();
+        $Sum_ab =$AB_Veterinary+$AB_Human;
+        $ab = substr(str_repeat(0, 3).$Sum_ab+1, - 3);
+
+        $CR_Veterinary = DrugModel::where('Certificate_Number','LIKE','BHU-DRA/22/CR/V%')->count();
+        $CR_Human = DrugModel::where('Certificate_Number','LIKE','BHU-DRA/22/CR/H%')->count();
+        $Sum_cr =$CR_Veterinary+$CR_Human;
+        $cr = substr(str_repeat(0, 3).$Sum_cr+1, - 3);
+
+        $RN_Veterinary = DrugModel::where('Certificate_Number','LIKE','BHU-DRA/22/RN/V%')->count();
+        $RN_Human = DrugModel::where('Certificate_Number','LIKE','BHU-DRA/22/RN/H%')->count();
+        $Sum_rn =$RN_Veterinary+$RN_Human;
+        $rn = substr(str_repeat(0, 3).$Sum_rn+1, - 3);
+        
+        return view ('Demo.create', compact('This_year','Therapeutic_cat','full','ex','ab','cr','rn'));
     }
 
     public function dashboard()

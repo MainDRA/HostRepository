@@ -30,8 +30,8 @@
                 <td>{{ $item->Market_Authorisation_Holder }}</td>
                 <td>{{ Carbon\Carbon::parse($item->Issue_Date)->addYear(3)->format('j-M-Y') }}</td>
                 <td class="align-middle text-center"><a class="test btn btn-light text-dark btn-lg"
-                        href="{{URL('/certification/'.$item->SL)}}">Preview</a></td>
-            </tr>
+                        href="{{URL('/'.$item->SL)}}"><i class="fa-solid fa-circle-chevron-right fa-xl"></i></a></td>
+            </tr> 
             @endforeach
         </tbody>
     </table>

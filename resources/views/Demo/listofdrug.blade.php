@@ -38,10 +38,8 @@
                     </div>
 
                     <div class="col-md-3">
-
                         <button class="btn btn-secondary btn-block" type="submit" value="Submit">Search
                             Results</button>
-
                     </div>
 
                 </div>

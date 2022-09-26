@@ -1,1 +1,1 @@
-$('.countrypicker').countrypicker();
+

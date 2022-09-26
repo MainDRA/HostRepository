@@ -25,52 +25,46 @@
         <div class="row">
 
             <!-- First line -->
-            <div class="col-md-4">
+            <div class="col-md-4 mb-4">
                 <label>Registration Type</label></br>
-                <input class="form-control" id="Rtype" name="Registration_Type" placeholder="Type to enter"
-                    list="Rtypes"></br>
-
-                <!-- List for helping -->
-                <datalist id="Rtypes">
-                    @foreach($Registration_Type as $Rtype)
-                    <option value="{{ $Rtype->Registration_Type }}">
-                        {{ $Rtype->Registration_Type }}</option>
-                    @endforeach
-                </datalist>
+                
+                <select class="form-select" id="Registration_Type" name="Registration_Type" onchange="RtypeSelect();">
+                    <option value="Full Registration">Full Registration</option>
+                    <option value="Expedited Registration">Expedited Registration</option>
+                    <option value="Abridged Registration">Abridged Registration</option>
+                    <option value="Company Registration">Company Registration</option>
+                    <option value="Renewed Registration">Renewed Registration</option>
+                </select>
 
             </div>
             <div class="col-md-4">
                 <label>Application Type</label></br>
-                <input class="form-control" id="Atype" name="Application_Type" placeholder="Type to enter"
-                    list="Atypes"></br>
-
-                <!-- List for helping -->
-                <datalist id="Atypes">
-                    @foreach($Application_Type as $Atype)
-                    <option value="{{ $Atype->Application_Type }}">
-                        {{ $Atype->Application_Type }}</option>
-                    @endforeach
-                </datalist>
+                
+                <select class="form-select" id="Atype" name="Application_Type">
+                    <option value="Generic Drug application">Generic Drug application</option>
+                    <option value="New Drug application">New Drug application</option>
+                </select>
 
             </div>
             <div class="col-md-4">
                 <label>This product is intended for</label></br>
-                <input class="form-control" id="Intention" name="This_product_is_intended_for"
-                    placeholder="Type to enter" list="Intention"></br>
-
-                <!-- List for helping -->
-                <datalist id="Intention">
-                    @foreach($Intention as $intention)
-                    <option value="{{ $intention->This_product_is_intended_for }}">
-                        {{ $intention->This_product_is_intended_for }}</option>
-                    @endforeach
-                </datalist>
+                
+                <select class="form-select" id="Intention" name="This_product_is_intended_for" onchange="RtypeSelect();">
+                    <option value="Veterinary">Veterinary</option>
+                    <option value="Human">Human</option>
+                </select>
             </div>
 
             <!-- Second line -->
             <div class="col-md-4">
                 <label>Category of Medical Product</label></br>
-                <input type="text" name="Category_of_Medical_Product" id="CategoryOfMedical" class="form-control"></br>
+        
+                <select class="form-select" id="CategoryOfMedical" name="Category_of_Medical_Product">
+                    <option value="Human Allopathic Medicine">Human Allopathic Medicine</option>
+                    <option value="Veterinary Allopathic Medicine">Veterinary Allopathic Medicine</option>
+                    <option value="Herbal Medicine">Herbal Medicine</option>
+                    <option value="Traditional Medicine">Traditional Medicine</option>
+                </select>
             </div>
             <div class="col-md-4">
                 <label> Dossage Form</label></br>
@@ -84,11 +78,11 @@
             <!-- Third line -->
             <div class="col-md-4">
                 <label>Brand Name</label></br>
-                <input type="text" name="Brand_Name" id="name" class="form-control"></br>
+                <input type="text" name="Brand_Name" id="Brand_Name" class="form-control"></br>
             </div>
             <div class="col-md-4">
                 <label>Type of Packaging</label></br>
-                <input type="text" name="Type_of_Packaging" id="name" class="form-control"></br>
+                <input type="text" name="Type_of_Packaging" id="Type_of_Packaging" class="form-control"></br>
             </div>
             <div class="col-md-4">
                 <label>Therapeutic Category</label></br>
@@ -106,21 +100,21 @@
             <!-- Fourth line -->
             <div class="col-md-4">
                 <label>Certificate Number</label></br>
-                <input type="text" name="Certificate_Number" id="name" class="form-control"></br>
+                <input type="text" name="Certificate_Number" id="Certificate_Number" class="form-control" value="BHU-DRA/{{$This_year}}/"></br>
             </div>
             <div class="col-md-4">
                 <label>Issue Date</label></br>
-                <input type="date" name="Issue_Date" id="name" class="form-control"></br>
+                <input type="date" name="Issue_Date" id="Issue_Date" class="form-control"></br>
             </div>
             <div class="col-md-4">
                 <label>Expiry Date</label></br>
-                <input type="date" name="Expiry_Date" id="name" class="form-control"></br>
+                <input type="date" name="Expiry_Date" id="Expiry_Date" class="form-control"></br>
             </div>
 
             <!-- Fifth line -->
             <div class="col-md-4">
                 <label>Market Authorisation Holder</label></br>
-                <input type="text" name="Market_Authorisation_Holder" id="name" class="form-control"></br>
+                <input type="text" name="Market_Authorisation_Holder" id="Market_Authorisation_Holder" class="form-control"></br>
             </div>
             <div class="col-md-4">
                 <label>Generic Name</label></br>
@@ -137,7 +131,7 @@
             <!-- Sixth line -->
             <div class="col-md-6">
                 <label>Manufacturer</label></br>
-                <input type="text" name="Manufacturer" id="name" class="form-control"></br>
+                <input type="text" name="Manufacturer" id="Manufacturer" class="form-control"></br>
             </div>
             <div class="col-md-6">
                 <label>Country of Manufacturer</label></br>
@@ -162,9 +156,9 @@
                 </div>
 
                 </br>
+
                 <textarea class="form-control" id="Composition_of_active_ingredients_with_strengths" rows="3"
-                    name="Composition_of_active_ingredients_with_strengths">
-                </textarea>
+                    name="Composition_of_active_ingredients_with_strengths"></textarea>
             </div>
 
         </div>
@@ -217,7 +211,55 @@
       theCount.css('font-weight','normal');
     }
         
-  });
+    });
+
+    // Certification number generate
+
+    function RtypeSelect()
+    {
+        var val = document.getElementById("Registration_Type").value;
+        if (val == "Full Registration"){
+            if (document.getElementById("Intention").value == "Veterinary"){
+                document.getElementById("Certificate_Number").value="BHU-DRA/{{$This_year}}/V{{$full}}";
+            }
+            else if(document.getElementById("Intention").value == "Human"){
+                document.getElementById("Certificate_Number").value="BHU-DRA/{{$This_year}}/H{{$full}}";
+            }   
+        }
+        else if (val == "Expedited Registration"){
+            if (document.getElementById("Intention").value == "Veterinary"){
+                document.getElementById("Certificate_Number").value="BHU-DRA/{{$This_year}}/ER/V{{$ex}}";
+            }
+            else if(document.getElementById("Intention").value == "Human"){
+                document.getElementById("Certificate_Number").value="BHU-DRA/{{$This_year}}/ER/H{{$ex}}";
+            }  
+        }
+        else if (val == "Abridged Registration"){
+            if (document.getElementById("Intention").value == "Veterinary"){
+                document.getElementById("Certificate_Number").value="BHU-DRA/{{$This_year}}/AR/V{{$ab}}";
+            }
+            else if(document.getElementById("Intention").value == "Human"){
+                document.getElementById("Certificate_Number").value="BHU-DRA/{{$This_year}}/AR/H{{$ab}}";
+            }  
+        }
+        else if (val == "Company Registration"){
+            if (document.getElementById("Intention").value == "Veterinary"){
+                document.getElementById("Certificate_Number").value="BHU-DRA/{{$This_year}}/CR/V{{$cr}}";
+            }
+            else if(document.getElementById("Intention").value == "Human"){
+                document.getElementById("Certificate_Number").value="BHU-DRA/{{$This_year}}/CR/H{{$cr}}";
+            }  
+        }
+        else {
+            if (document.getElementById("Intention").value == "Veterinary"){
+                document.getElementById("Certificate_Number").value="BHU-DRA/{{$This_year}}/RN/V{{$rn}}";
+            }
+            else if(document.getElementById("Intention").value == "Human"){
+                document.getElementById("Certificate_Number").value="BHU-DRA/{{$This_year}}/RN/H{{$rn}}";
+            }
+        }
+        
+    }
 
 </script>
 
